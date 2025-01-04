@@ -1,4 +1,9 @@
-export abstract class PaymentBaseService {
+export interface PaymentBase {
+  pay(): void;
+  clearPayment(): void;
+}
+
+export abstract class PaymentBaseService implements PaymentBase {
   #paymentDetails = { amount: 0, address: '' };
 
   get paymentDetails() {

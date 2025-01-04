@@ -38,6 +38,7 @@
             ],
             "scripts": [],
             "styles": [
+              "@angular/material/prebuilt-themes/magenta-violet.css",
               "src/global_styles.scss"
             ],
             "tsConfig": "tsconfig.app.json"

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { PaymentBaseService } from './payment-base';
-
 @Injectable({
   providedIn: 'root',
 })

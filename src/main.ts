@@ -1,17 +1,24 @@
+import { provideHttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter, Route, RouterModule } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <h1>Hello from {{ name }}!</h1>
-    <a target="_blank" href="https://angular.dev/overview">
-      Learn more about Angular
-    </a>
-  `,
+  template: `<router-outlet />`,
+  imports: [RouterModule],
 })
-export class App {
-  name = 'Angular';
-}
+export class App {}
 
-bootstrapApplication(App);
+export const appRoutes: Route[] = [
+  {
+    path: 'payment',
+    loadComponent: () =>
+      import('./payment-module/components/page-payment/page-payment.component').then((m) => m.PagePaymentComponent),
+  },
+];
+
+bootstrapApplication(App, {
+  providers: [provideHttpClient(), provideRouter(appRoutes), provideAnimationsAsync()],
+});
