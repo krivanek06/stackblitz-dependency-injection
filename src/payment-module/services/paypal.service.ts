@@ -5,7 +5,12 @@ import { PaymentBaseService } from './payment-base';
   providedIn: 'root',
 })
 export class PaypalService extends PaymentBaseService {
-  pay() {
+  constructor() {
+    super();
+    console.log('PaypalService created');
+  }
+
+  override pay() {
     console.log('Paying with PayPal');
     super.clearPayment();
   }

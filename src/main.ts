@@ -1,12 +1,18 @@
 import { provideHttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter, Route, RouterModule } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideRouter, Route, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  template: `<router-outlet />`,
+  template: `
+    <main class="bg-slate-500 h-screen pt-[300px] justify-center">
+      <div class="flex justify-center">
+        <router-outlet />
+      </div>
+    </main>
+  `,
   imports: [RouterModule],
 })
 export class App {}

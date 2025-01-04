@@ -5,7 +5,12 @@ import { PaymentBaseService } from './payment-base';
   providedIn: 'root',
 })
 export class StripeService extends PaymentBaseService {
-  pay() {
+  constructor() {
+    super();
+    console.log('StripeService created');
+  }
+
+  override pay() {
     console.log('Paying with Stripe');
     super.clearPayment();
   }

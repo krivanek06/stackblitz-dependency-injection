@@ -1,9 +1,12 @@
+import { Injectable } from '@angular/core';
+
 export interface PaymentBase {
   pay(): void;
   clearPayment(): void;
 }
 
-export abstract class PaymentBaseService implements PaymentBase {
+@Injectable()
+export class PaymentBaseService implements PaymentBase {
   #paymentDetails = { amount: 0, address: '' };
 
   get paymentDetails() {
@@ -14,7 +17,9 @@ export abstract class PaymentBaseService implements PaymentBase {
     this.#paymentDetails = paymentDetails;
   }
 
-  abstract pay(): void;
+  pay(): void {
+    throw new Error('Method not implemented.');
+  }
 
   clearPayment() {
     this.#paymentDetails = { amount: 0, address: '' };

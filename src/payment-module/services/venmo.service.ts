@@ -4,7 +4,12 @@ import { PaymentBaseService } from './payment-base';
   providedIn: 'root',
 })
 export class VenmoService extends PaymentBaseService {
-  pay() {
+  constructor() {
+    super();
+    console.log('VenmoService created');
+  }
+
+  override pay() {
     console.log('Paying with Venmo');
     super.clearPayment();
   }
