@@ -5,7 +5,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioGroup, MatRadioModule } from '@angular/material/radio';
-import { startWith } from 'rxjs';
 import { PaymentBaseService } from '../../services/payment-base';
 import { PaypalService } from '../../services/paypal.service';
 import { StripeService } from '../../services/stripe.service';
@@ -76,14 +75,12 @@ export class PagePaymentComponent {
     }),
   });
 
-  constructor() {
-    // update payment service based on payment type
-    this.form.controls.type.valueChanges.pipe(startWith(this.form.controls.type.value)).subscribe((value) => {
-      this.paymentBaseService = this.updatePaymentService(value);
-    });
-  }
-
   onSubmit() {
+    // get the payment type
+    const type = this.form.controls.type.value;
+    // update the payment service
+    this.paymentBaseService = this.updatePaymentService(type);
+    // pay
     this.paymentBaseService.pay();
   }
 
