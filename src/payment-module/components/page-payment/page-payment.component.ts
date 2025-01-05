@@ -21,7 +21,6 @@ import { VenmoService } from '../../services/venmo.service';
     ReactiveFormsModule,
     MatRadioGroup,
   ],
-  providers: [PaymentBaseService],
   template: `
     <form class="grid gap-2 w-[450px]" [formGroup]="form" (ngSubmit)="onSubmit()">
       <!-- payment amount -->

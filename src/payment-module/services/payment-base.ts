@@ -1,11 +1,8 @@
-import { Injectable } from '@angular/core';
-
 export interface PaymentBase {
   pay(): void;
   clearPayment(): void;
 }
 
-@Injectable()
 export class PaymentBaseService implements PaymentBase {
   #paymentDetails = { amount: 0, address: '' };
 
