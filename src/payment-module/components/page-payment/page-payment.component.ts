@@ -5,7 +5,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioGroup, MatRadioModule } from '@angular/material/radio';
-import { PaymentBaseService } from '../../services/payment-base';
 import { PaypalService } from '../../services/paypal.service';
 import { StripeService } from '../../services/stripe.service';
 import { VenmoService } from '../../services/venmo.service';
@@ -59,9 +58,6 @@ import { VenmoService } from '../../services/venmo.service';
 export class PagePaymentComponent {
   private readonly injector = inject(Injector);
 
-  // dynamic service injection
-  private paymentBaseService!: PaymentBaseService;
-
   readonly form = new FormGroup({
     amount: new FormControl(0, {
       nonNullable: true,
@@ -78,9 +74,9 @@ export class PagePaymentComponent {
     // get the payment type
     const type = this.form.controls.type.value;
     // update the payment service
-    this.paymentBaseService = this.updatePaymentService(type);
+    const paymentBaseService = this.updatePaymentService(type);
     // pay
-    this.paymentBaseService.pay();
+    paymentBaseService.pay();
   }
 
   private updatePaymentService(type: 'paypal' | 'stripe' | 'venmo') {
