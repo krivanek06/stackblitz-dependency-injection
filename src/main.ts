@@ -20,8 +20,7 @@ export class App {}
 export const appRoutes: Route[] = [
   {
     path: 'payment',
-    loadComponent: () =>
-      import('./payment-module/components/page-payment/page-payment.component').then((m) => m.PagePaymentComponent),
+    loadComponent: () => import('./payment-module/page-payment.component').then((m) => m.PagePaymentComponent),
   },
 ];
 

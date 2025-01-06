@@ -5,9 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioGroup, MatRadioModule } from '@angular/material/radio';
-import { PaypalService } from '../../services/paypal.service';
-import { StripeService } from '../../services/stripe.service';
-import { VenmoService } from '../../services/venmo.service';
+import { PaypalService } from './paypal.service';
+import { StripeService } from './stripe.service';
+import { VenmoService } from './venmo.service';
 
 @Component({
   selector: 'app-page-payment',
